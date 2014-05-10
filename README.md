@@ -15,7 +15,7 @@ written in Go so it's just single binary + config file
 
 The latest release is available as a binary at [Github][github-release]
 
-[github-release]: https://github.com/coreos/etcd/releases/
+[github-release]: https://github.com/nordicdyno/jenkins-goauth2/releases/
 
 
 You can also build jenkins-goauth2 from source:
