@@ -76,7 +76,7 @@ scope = "https://www.googleapis.com/auth/userinfo.profile+https://www.googleapis
 
 ## how it works
 
-Mostly it's just proxy witch adds email (from Google's account) into X-Forwarded-User HTTP Header
+Mostly it's just proxy which adds email (from Google's account) into X-Forwarded-User HTTP Header
 
 Setup reverse proxy in Jenkins:
 ```
