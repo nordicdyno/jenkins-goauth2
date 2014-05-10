@@ -1,7 +1,7 @@
 jenkins-goauth2
 ================
 
-`jenkins-goauth2` is Jenkins & Google OAuth2 Security Proxy
+`jenkins-goauth2` is Google OAuth2 Security Proxy for Jenkins
 
 written in Go so it's just single binary + config file
 
