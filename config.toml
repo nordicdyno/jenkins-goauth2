@@ -1,0 +1,39 @@
+# Config boilerplate
+bind = ":80"
+trusted_domain = "@sports.ru"
+# trusted_emails - toml only accessible (no cli option)
+trusted_emails = [
+	"nordicdyno@gmail.com",
+]
+
+[session]
+secret = "sports.ru"
+ttl = "7d"
+http_only = true
+path = "/"
+
+[proxy]
+jenkins_url  = "http://jenkins.sports.ru:8080"
+# skip_auth - toml only accessible (no cli option)
+# skip_auth - are urls with gorilla muxer syntax: http://www.gorillatoolkit.org/pkg/mux
+skip_auth = [
+# from jenkins doc
+	"/bitbucket-hook{rest:.*}",
+	"/cli{rest:.*}",
+	"/git{rest:.*}",
+	"/jnlpjars{rest:.*}",
+	"/subversion{rest:.*}",
+	"/whoami{rest:.*}",
+# my extra urls, to avoid checks
+	"/plugin/jquery-ui{rest:.*}",
+	"/static/{rest:.*}",
+	"/plugin/{rest:.*}",
+	"/adjuncts/{rest:.*}",
+	"/html5-notifier-plugin/{rest:.*}",
+]
+
+[oauth]
+client_id = "129830129010-3ap1aqond5nhjrmnpt3pbg5bg1d6lp3i"
+secret = ""
+callback = "http://jenkins.sports.ru/oauth2callback"
+scope = "https://www.googleapis.com/auth/userinfo.profile+https://www.googleapis.com/auth/userinfo.email"
