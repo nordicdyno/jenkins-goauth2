@@ -1,7 +1,5 @@
 package main
 
-// move secret word "tribunacom" to config
-
 import (
 	"bytes"
 	"encoding/json"
@@ -14,14 +12,11 @@ import (
 	"net/url"
 	"os"
 	"strings"
-
 	_ "expvar"
-	//"time"
 
 	"code.google.com/p/goauth2/oauth"
 	"github.com/gorilla/mux"
 	"github.com/gorilla/sessions"
-	//"github.com/pelletier/go-toml"
 )
 
 var ProxyHandler *httputil.ReverseProxy
@@ -42,8 +37,6 @@ var store *sessions.CookieStore
 func setupSessionStore(secret string) {
 	store = sessions.NewCookieStore([]byte(secret))
 }
-
-//= sessions.NewCookieStore([]byte("tribunacom"))
 
 func main() {
 	r := mux.NewRouter()
@@ -72,7 +65,6 @@ func main() {
 	h := appHandler{router: r}
 	os.Args = nil // monkeypatch: hide commandline from expvar
 	http.Handle("/", h)
-	//_ = h; http.Handle("/", r)
 
 	if *Verbose {
 		fmt.Println("Run!")
@@ -89,7 +81,6 @@ type appHandler struct {
 }
 
 func (h appHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	//log.Println("appHandler wrapper")
 	defer func() {
 		if rec := recover(); rec != nil {
 			log.Println("Catch error. Recovering...")
@@ -111,7 +102,6 @@ func (h appHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 }
 
 func notFoundHandler(w http.ResponseWriter, r *http.Request) {
-	//if *Verbose {log.Println("Not found handler") }
 	loginHandler(w, r)
 }
 

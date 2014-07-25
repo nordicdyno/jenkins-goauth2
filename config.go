@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"go/build"
 	"log"
-	//"os"
 	"path/filepath"
 	"strconv"
 	"strings"
@@ -47,14 +46,10 @@ var conf = AppConfig{
 }
 
 func init() {
-	//fmt.Println("run config.init()")
-
 	flag.Parse()
 	if _, err := toml.DecodeFile(*configFile, &conf); err != nil {
 		log.Fatalf("TOML %s parse error: %s\n", *configFile, err.Error())
 	}
-	//fmt.Printf("%+v\n", conf)
-	//os.Exit(0)
 
 	/* redefine config options from CLI */
 	if *oauthScope != "" {
@@ -97,9 +92,6 @@ func init() {
 	}
 	conf.Session.TtlSeconds = int(dur.Seconds())
 
-	//fmt.Printf("conf: %+v\n", conf)
-	//os.Exit(0)
-
 	setupProxyHandler(conf.Proxy.JenkinsUrl)
 	setupSessionStore(conf.Session.Secret)
 
@@ -110,7 +102,6 @@ func init() {
 		AuthURL:      "https://accounts.google.com/o/oauth2/auth",
 		TokenURL:     "https://accounts.google.com/o/oauth2/token",
 		RedirectURL:  conf.Oauth.Callback,
-		//TokenCache:   oauth.CacheFile(*cachefile),
 	}
 }
 
@@ -190,23 +181,3 @@ func defaultConfigFile() string {
 	}
 	return filepath.Join(p.Dir, "config.toml")
 }
-
-//This is the URL that Google has defined so that an authenticated application
-// may obtain the user's info in json format
-
-/*
-type TransportLogger struct {
-	http.RoundTripper
-}
-
-func (lt TransportLogger) RoundTrip(r *http.Request) (res *http.Response, err error) {
-	log.Println("Getting:", r.URL)
-	res, err = lt.RoundTripper.RoundTrip(r)
-
-	data, dumpErr := httputil.DumpResponse(res, false)
-	errhandler.Handle("Error dumping response: ", dumpErr)
-	log.Printf("Response: %s\n", data)
-
-	return
-}
-*/
