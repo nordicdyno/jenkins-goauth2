@@ -1,0 +1,4 @@
+# IDEA's Go plugin's junk:
+.idea/
+jenkins-goauth2.iml
+src/
