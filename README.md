@@ -92,5 +92,6 @@ Url for manual logout: `/logout`
 
 ## TODO:
 
+- better error handling
 - versions & dependencies control
 - groups support (MAYBE)
