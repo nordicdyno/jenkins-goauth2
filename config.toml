@@ -14,8 +14,10 @@ path = "/"
 
 [proxy]
 jenkins_url  = "http://jenkins.sports.ru:8080"
+disable_url_decode = true
+
 # skip_auth - toml only accessible (no cli option)
-# skip_auth - are urls with gorilla muxer syntax: http://www.gorillatoolkit.org/pkg/mux
+#  these urls are with gorilla muxer syntax: http://www.gorillatoolkit.org/pkg/mux
 skip_auth = [
 # from jenkins doc
 	"/bitbucket-hook{rest:.*}",

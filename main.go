@@ -143,6 +143,15 @@ func loginHandler(w http.ResponseWriter, r *http.Request) {
 			log.Printf("Proxy %s  to %s\n", emailStr, r.URL.String())
 		}
 		r.Header.Add("X-Forwarded-User", emailStr)
+
+		// "Official" way to avoid url encode
+		if conf.Proxy.DisableUrlDecode {
+			r.URL.Opaque = strings.SplitN(r.RequestURI, "?", 2)[0]
+			if *Verbose {
+				log.Println("undecoded url is: ", r.URL.Opaque)
+			}
+		}
+
 		ProxyHandler.ServeHTTP(w, r)
 		return
 	}

@@ -148,8 +148,9 @@ type AppSessionConfig struct {
 }
 
 type AppProxyConfig struct {
-	JenkinsUrl string   `toml:"jenkins_url"`
-	SkipUrls   []string `toml:"skip_auth"`
+	JenkinsUrl       string   `toml:"jenkins_url"`
+	SkipUrls         []string `toml:"skip_auth"`
+	DisableUrlDecode bool     `toml:"disable_url_decode"`
 }
 
 type AppOauthConfig struct {
