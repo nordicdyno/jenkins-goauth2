@@ -49,6 +49,8 @@ path = "/"
 
 [proxy]
 jenkins_url  = "http://jenkins-url:8080"
+# for Jenkins pleasure
+disable_url_decode = true
 # skip_auth - toml only accessible (no CLI option)
 # skip_auth - are urls with Gorilla Muxer syntax: http://www.gorillatoolkit.org/pkg/mux
 skip_auth = [
@@ -72,6 +74,9 @@ client_id = "123098345678-3hg1jdj5nhjr34mnpt473hdb2"
 secret = "{your-secret-here}"
 callback = "http://your-host-name/oauth2callback"
 scope = "https://www.googleapis.com/auth/userinfo.profile+https://www.googleapis.com/auth/userinfo.email"
+
+[template_vars]
+admin = "admin@tribuna.com"
 ```
 
 ## how it works
