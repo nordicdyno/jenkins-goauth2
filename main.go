@@ -3,6 +3,7 @@ package main
 import (
 	"bytes"
 	"encoding/json"
+	_ "expvar"
 	"fmt"
 	"io"
 	"io/ioutil"
@@ -12,7 +13,6 @@ import (
 	"net/url"
 	"os"
 	"strings"
-	_ "expvar"
 
 	"code.google.com/p/goauth2/oauth"
 	"github.com/gorilla/mux"
