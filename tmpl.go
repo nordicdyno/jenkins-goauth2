@@ -28,6 +28,7 @@ Message: «{{.Message}}»
 
 type LoginPage struct {
 	GoogleUrl string
+	Admin     string
 }
 
 var loginTemplate = template.Must(template.New("").Parse(`
@@ -38,7 +39,7 @@ var loginTemplate = template.Must(template.New("").Parse(`
 <div style="text-align: center; font-size: 80%; font-family: Arial, sans-serif">
     <p><a href="{{.GoogleUrl}}">Log in</a> with your Google account</p>
     <p style="margin-top: 3em">
-    For access, contact with <a href="admin@sports.ru">administrator</a>.
+    For access, contact with <a href="{{.Admin}}">administrator</a>.
     </p>
 :D
 </div>

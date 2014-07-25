@@ -166,7 +166,7 @@ func loginHandler(w http.ResponseWriter, r *http.Request) {
 	if *Verbose {
 		log.Println("login page render")
 	}
-	err := loginTemplate.Execute(w, &LoginPage{GoogleUrl: oauthUrl})
+	err := loginTemplate.Execute(w, &LoginPage{GoogleUrl: oauthUrl, Admin: conf.TmplVars.Admin})
 	if err != nil {
 		panic(err)
 	}

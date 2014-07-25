@@ -39,3 +39,6 @@ client_id = "129830129010-3ap1aqond5nhjrmnpt3pbg5bg1d6lp3i"
 secret = ""
 callback = "http://jenkins.sports.ru/oauth2callback"
 scope = "https://www.googleapis.com/auth/userinfo.profile+https://www.googleapis.com/auth/userinfo.email"
+
+[template_vars]
+admin = "admin@tribuna.com"

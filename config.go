@@ -41,8 +41,9 @@ var (
 )
 
 var conf = AppConfig{
-	Oauth: AppOauthConfig{},
-	Proxy: AppProxyConfig{},
+	Oauth:    AppOauthConfig{},
+	Proxy:    AppProxyConfig{},
+	TmplVars: TmplVarsConfig{},
 }
 
 func init() {
@@ -135,8 +136,9 @@ type AppConfig struct {
 	Proxy         AppProxyConfig
 	Session       AppSessionConfig
 	Bind          string
-	TrustedDomain string   `toml:"trusted_domain"`
-	TrustedEmails []string `toml:"trusted_emails"`
+	TrustedDomain string         `toml:"trusted_domain"`
+	TrustedEmails []string       `toml:"trusted_emails"`
+	TmplVars      TmplVarsConfig `toml:"template_vars"`
 }
 
 type AppSessionConfig struct {
@@ -158,6 +160,10 @@ type AppOauthConfig struct {
 	Secret   string
 	Callback string
 	Scope    string
+}
+
+type TmplVarsConfig struct {
+	Admin string
 }
 
 type UserInfo struct {
